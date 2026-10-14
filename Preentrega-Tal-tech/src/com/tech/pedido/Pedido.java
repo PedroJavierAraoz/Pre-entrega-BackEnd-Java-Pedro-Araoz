@@ -1,9 +1,11 @@
-package com.tech.productos;
+package com.tech.pedido;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.tech.productos.Producto;
 
 public class Pedido {
 
@@ -61,7 +63,29 @@ public class Pedido {
 	}
 
 	public boolean eliminarProducto(Producto producto) {
+	// debe recibir  la referencia  al objeto producto q eliminar
+
 		return productos.remove(producto);
+	}
+
+	public boolean eliminarProductoPorNombre(String nombre){
+	//recibe el nombre  del producto a eliminar	
+		Producto p=  buscarProducto(nombre);
+		if (p!=null){
+			return eliminarProducto(p);
+		}
+		return false;
+	}
+
+	private Producto buscarProducto(String nombre) {
+
+		for  (Producto p : productos){
+			if (p.getNombre().equals(nombre)){
+				return p;
+			}
+		}
+		return null;
+
 	}
 
 	public double getTotal() {

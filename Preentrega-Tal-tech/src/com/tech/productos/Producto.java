@@ -11,7 +11,9 @@ public class Producto {
 		this.precio = precio;
 	}
 
-	public String getCodigo() {
+	
+
+    public String getCodigo() {
 		return codigo;
 	}
 
@@ -34,5 +36,10 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+    @Override 
+    public String toString(){
+        String objeto= "Codigo: " + this.codigo + " \n" + "Nombre: "+ this.nombre +" \n" + "Precio: "+this.precio + " \n";
+        return objeto;
+    }
 
 }
