@@ -92,4 +92,16 @@ public class Pedido {
 		return productos.stream().mapToDouble(Producto::getPrecio).sum();
 	}
 
+	@Override 
+	public String toString() {
+		StringBuilder objeto= new StringBuilder();
+		objeto.append("Numero: "+ numero +" - Cliente: '"+ cliente + " '- Fecha: " + this.fechaCreacion.getDayOfMonth()+"/"+fechaCreacion.getMonthValue()+"/"+fechaCreacion.getYear() + " \n");
+		objeto.append("Listado de productos \n");
+		objeto.append("======= == ========= \n");
+		for(Producto p: productos){
+			objeto.append(p).append("\n");
+
+		}
+        return objeto.toString();
+	}
 }

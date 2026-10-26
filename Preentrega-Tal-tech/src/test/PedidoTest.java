@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,11 +23,6 @@ public class PedidoTest {
     }
 
     @Test
-    public void testActualizarNombre() {
-        assertTrue(true);
-    }
-
-    @Test
     public void testCrearPedido() {
         assertNotNull(this.pedido);
     }
@@ -34,12 +30,17 @@ public class PedidoTest {
     public  void testAgregarProducto(){
         Producto producto2= new Producto("PRD-002", "Cafe instantaneo", 22.4);
         pedido.agregarProducto(producto2);
-        assertEquals(2, pedido.getProductos().size());    }
+        assertEquals(2, pedido.getProductos().size()); }
 
     @Test 
-    public void testEliminarProductoPorNombre(){
+    public void testEliminarProductoExixtentePorNombre(){
         pedido.eliminarProductoPorNombre("Azucar");
         assertEquals(0, pedido.getProductos().size());
 
+    }
+
+    @Test 
+    public void testEliminarProductoNoExixtentePorNombre(){
+        assertFalse(pedido.eliminarProductoPorNombre("azucar"));
     }
 }
